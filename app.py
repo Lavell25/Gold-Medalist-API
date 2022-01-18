@@ -131,3 +131,12 @@ def athlete(id=None):
         athlete = model_to_dict(athlete)
         athlete = jsonify(athlete)
         return athlete
+
+    if request.method == 'PUT':
+        updated_athlete = request.get_json()
+        athlete = Athlete.get(Athlete.id == id)
+        athlete.name = updated_athlete['name']
+        athlete.gold_medal_count = updated_athlete['gold metal count']
+        athlete.silver_medal_count = updated_athlete['silver metal count']
+        athlete.bronze_medal_count = updated_athlete['bronze metal count']
+        athlete.total_medal_count = updated_athlete['total metal count']
