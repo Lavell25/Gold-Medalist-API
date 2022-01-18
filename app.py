@@ -32,7 +32,7 @@ db.connect()
 db.drop_tables([Athlete])
 db.create_tables([Athlete])
 
-athlete0 = Athlete(
+michelPhelps = Athlete(
     name='Michael Phelps',
     event='200m Butterfly',
     location='Athens',
@@ -42,7 +42,7 @@ athlete0 = Athlete(
     nationality='American',
     age=19,
     total_gold_medal_count=23).save()
-athlete1 = Athlete(
+usainBolt = Athlete(
     name='Usain Bolt',
     event='100m',
     location='Bejing',
@@ -52,7 +52,7 @@ athlete1 = Athlete(
     nationality='Jamaican',
     age=22,
     total_gold_medal_count=8).save()
-athlete2 = Athlete(
+JesseOwens = Athlete(
     name='Jesse Owens',
     event='200m',
     location='Berlin',
@@ -62,7 +62,7 @@ athlete2 = Athlete(
     nationality='American',
     age=22,
     total_gold_medal_count=4).save()
-athlete4 = Athlete(
+gabbyDouglas = Athlete(
     name='Gabby Douglas',
     event='Individual all-around',
     location='London',
@@ -72,7 +72,7 @@ athlete4 = Athlete(
     nationality='American',
     age=16,
     total_gold_medal_count=3).save()
-athlete5 = Athlete(
+carlLewis = Athlete(
     name='Carl Lewis',
     event='Long Jump',
     location='Los Angeles',
@@ -82,7 +82,7 @@ athlete5 = Athlete(
     nationality='American',
     age=23,
     total_gold_medal_count=9).save()
-athlete6 = Athlete(
+katieLedecky = Athlete(
     name='Katie Ledecky',
     event='800m Freestyle',
     location='London',
@@ -92,7 +92,7 @@ athlete6 = Athlete(
     nationality='American',
     age=15,
     total_gold_medal_count=7).save()
-athlete8 = Athlete(
+usaBasketball = Athlete(
     name='USA Basketball',
     event='Basketball',
     location='Bejing',
@@ -102,7 +102,7 @@ athlete8 = Athlete(
     nationality='American',
     age=1776,
     total_gold_medal_count=25).save()
-athlete10 = Athlete(
+markSpitz = Athlete(
     name='Mark Spitz',
     event='100m Freestyle',
     location='Munich',
@@ -112,7 +112,7 @@ athlete10 = Athlete(
     nationality='American',
     age=22,
     total_gold_medal_count=9).save()
-athlete11 = Athlete(
+kurtAngle = Athlete(
     name='Kurt Angle',
     event='Wrestling 100kg',
     location='Atlanta',
@@ -174,7 +174,7 @@ def athlete(id=None):
 
 @app.route('/')
 def index():
-    return "Wanna choose your favorite Olympis gold Medalist"
+    return "Hello! Welcome to the gold medalist API! Conntinue to localhost:9000/athlete"
 
 
 app.run(port=9000, debug=True)
