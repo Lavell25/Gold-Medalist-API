@@ -42,3 +42,31 @@ athlete1 = Athlete(
     olympic_year='2008, 2012, 2016',
     medal_recieved='Gold'
 )
+athlete2 = Athlete(
+    name='Jesse Owens',
+    event='200m',
+    place='First',
+    olympic_year='1936',
+    medal_recieved='Gold'
+)
+athlete3 = Athlete(
+    name='Usain Bolt',
+    event='400m Relay',
+    place='First',
+    olympic_year='2012, 2016',
+    medal_recieved='Gold'
+)
+athlete4 = Athlete(
+    name='Gabby Douglas',
+    event='Individual all-around',
+    place='First',
+    olympic_year='2012, 2016',
+    medal_recieved='Gold'
+)
+athlete5 = Athlete(
+    name='Greg Lewis',
+    event='Long Jump',
+    place='First',
+    olympic_year='1984',
+    medal_recieved='Gold'
+)
