@@ -7,6 +7,18 @@ from peewee import *
 
 from playhouse.shortcuts import model_to_dict, dict_to_model
 
-db = PostgresqlDatabase('athlete', user='postgres',
+db = PostgresqlDatabase('athlete1', user='postgres',
                         password='', host='localhost', port=5432)
 
+
+class BaseModel(Model):
+    class Meta:
+        database = db
+
+
+class Athlete(BaseModel):
+    name = CharField()
+    event = CharField()
+    place = CharField()
+    olympic_year = IntegerField()
+    medal_recieved = CharField()
