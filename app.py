@@ -70,3 +70,31 @@ athlete5 = Athlete(
     olympic_year='1984',
     medal_recieved='Gold'
 )
+athlete6 = Athlete(
+    name='Katie Ledecky',
+    event='800m Freestyle',
+    place='First',
+    olympic_year='2012',
+    medal_recieved='Gold'
+)
+athlete7 = Athlete(
+    name='Paavo Nurmi',
+    event='10,000m Long Distance',
+    place='First',
+    olympic_year='1920',
+    medal_recieved='Gold'
+)
+athlete8 = Athlete(
+    name='USA Basketball',
+    event='Basketball',
+    place='First',
+    olympic_year='2012',
+    medal_recieved='Gold'
+)
+athlete9 = Athlete(
+    name='Odlanier Solis',
+    event='Boxing',
+    place='First',
+    olympic_year='2004',
+    medal_recieved='Gold'
+)
