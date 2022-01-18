@@ -22,3 +22,8 @@ class Athlete(BaseModel):
     place = CharField()
     olympic_year = IntegerField()
     medal_recieved = CharField()
+
+
+db.connect()
+db.drop_tables([Athlete])
+db.create_tables([Athlete])
