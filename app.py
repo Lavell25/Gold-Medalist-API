@@ -7,7 +7,7 @@ from peewee import *
 
 from playhouse.shortcuts import model_to_dict, dict_to_model
 
-db = PostgresqlDatabase('athlete1', user='postgres',
+db = PostgresqlDatabase('medal', user='postgres',
                         password='', host='localhost', port=5432)
 
 
@@ -19,9 +19,13 @@ class BaseModel(Model):
 class Athlete(BaseModel):
     name = CharField()
     event = CharField()
-    place = CharField()
+    location = CharField()
     olympic_year = IntegerField()
-    medal_recieved = CharField()
+    other_finishers = CharField()
+    score = IntegerField()
+    nationality = CharField()
+    age = IntegerField()
+    total_gold_medal_count = IntegerField()
 
 
 db.connect()
@@ -31,75 +35,93 @@ db.create_tables([Athlete])
 athlete0 = Athlete(
     name='Michael Phelps',
     event='200m Butterfly',
-    place='First',
-    olympic_year='2004, 2008, 2012',
-    medal_recieved='Gold').save
+    location='Athens',
+    olympic_year=2004,
+    other_finishers='Takashi Yamamoto and Stephen Parry',
+    score=1.54,
+    nationality='American',
+    age=19,
+    total_gold_medal_count=23).save()
 athlete1 = Athlete(
     name='Usain Bolt',
     event='100m',
-    place='First',
-    olympic_year='2008, 2012, 2016',
-    medal_recieved='Gold').save
+    location='Bejing',
+    olympic_year=2008,
+    other_finishers='Richard Thompson and Walter Dix',
+    score=9.69,
+    nationality='Jamaican',
+    age=22,
+    total_gold_medal_count=8).save()
 athlete2 = Athlete(
     name='Jesse Owens',
     event='200m',
-    place='First',
-    olympic_year='1936',
-    medal_recieved='Gold').save
-athlete3 = Athlete(
-    name='Usain Bolt',
-    event='400m Relay',
-    place='First',
-    olympic_year='2012, 2016',
-    medal_recieved='Gold').save
+    location='Berlin',
+    olympic_year=1936,
+    other_finishers='Mack Robinson and Tinus Osendarp',
+    score=20.3,
+    nationality='American',
+    age=22,
+    total_gold_medal_count=4).save()
 athlete4 = Athlete(
     name='Gabby Douglas',
     event='Individual all-around',
-    place='First',
-    olympic_year='2012, 2016',
-    medal_recieved='Gold').save
+    location='London',
+    olympic_year=2012,
+    other_finishers='Viktoria Komova and Aliya Mustafina',
+    score=62.232,
+    nationality='American',
+    age=16,
+    total_gold_medal_count=3).save()
 athlete5 = Athlete(
-    name='Greg Lewis',
+    name='Carl Lewis',
     event='Long Jump',
-    place='First',
-    olympic_year='1984',
-    medal_recieved='Gold').save
+    location='Los Angeles',
+    olympic_year=1984,
+    other_finishers='Gary Honey and Giovanni Evangelisti',
+    score=8.54,
+    nationality='American',
+    age=23,
+    total_gold_medal_count=9).save()
 athlete6 = Athlete(
     name='Katie Ledecky',
     event='800m Freestyle',
-    place='First',
-    olympic_year='2012',
-    medal_recieved='Gold').save
-athlete7 = Athlete(
-    name='Paavo Nurmi',
-    event='10,000m Long Distance',
-    place='First',
-    olympic_year='1920',
-    medal_recieved='Gold').save
+    location='London',
+    olympic_year=2012,
+    other_finishers='Mireia Belmonte García	and Rebecca Adlington',
+    score=8.14,
+    nationality='American',
+    age=15,
+    total_gold_medal_count=7).save()
 athlete8 = Athlete(
     name='USA Basketball',
     event='Basketball',
-    place='First',
-    olympic_year='2012',
-    medal_recieved='Gold').save
-athlete9 = Athlete(
-    name='Odlanier Solis',
-    event='Boxing',
-    place='First',
-    olympic_year='2004',
-    medal_recieved='Gold').save
+    location='Bejing',
+    olympic_year=2008,
+    other_finishers='Spain and Argentina',
+    score=8-0,
+    nationality='American',
+    age=1776,
+    total_gold_medal_count=25).save()
 athlete10 = Athlete(
     name='Mark Spitz',
     event='100m Freestyle',
-    place='First',
-    olympic_year='1972',
-    medal_recieved='Gold').save
+    location='Munich',
+    olympic_year=1972,
+    other_finishers='Jerry heidenreich and Vladmir Bure',
+    score=51.22,
+    nationality='American',
+    age=22,
+    total_gold_medal_count=9).save()
 athlete11 = Athlete(
     name='Kurt Angle',
     event='Wrestling 100kg',
-    place='First',
-    olympic_year='1996',
-    medal_recieved='Gold').save
+    location='Atlanta',
+    olympic_year=1996,
+    other_finishers='Abbas Jadidi and Arawat Sabejew',
+    score=2-1,
+    nationality='American',
+    age=22,
+    total_gold_medal_count=1).save()
 
 
 app = Flask(__name__)
@@ -136,10 +158,13 @@ def athlete(id=None):
         updated_athlete = request.get_json()
         athlete = Athlete.get(Athlete.id == id)
         athlete.name = updated_athlete['name']
-        athlete.gold_medal_count = updated_athlete['gold metal count']
-        athlete.silver_medal_count = updated_athlete['silver metal count']
-        athlete.bronze_medal_count = updated_athlete['bronze metal count']
-        athlete.total_medal_count = updated_athlete['total metal count']
+        athlete.event = updated_athlete['event']
+        athlete.location = updated_athlete['location']
+        athlete.other_finishers = updated_athlete['opponents']
+        athlete.score = updated_athlete['score']
+        athlete.nationailty = updated_athlete['nationailty']
+        athlete.age = updated_athlete['age']
+        athlete.total_gold_medal_count = updated_athlete['total metal count']
 
     if request.method == 'DELETE':
         athlete = Athlete.get(Athlete.id == id)
