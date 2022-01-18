@@ -145,3 +145,11 @@ def athlete(id=None):
         athlete = Athlete.get(Athlete.id == id)
         athlete.delete_instance()
         return jsonify({"deleted": True})
+
+
+@app.route('/')
+def index():
+    return "Wanna choose your favorite Olympis gold Medalist"
+
+
+app.run(port=9000, debug=True)
