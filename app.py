@@ -107,3 +107,19 @@ app = Flask(__name__)
 
 @app.route('/athlete', methods=['GET', 'PUT', 'POST', 'DELETE'])
 @app.route('/athlete/<id>', methods=['GET', 'PUT', 'POST', 'DELETE'])
+def athlete(id=None):
+    if request.method == 'GET':
+
+        if id:
+            athlete = Athlete.get(Athlete.id == id)
+            athlete = model_to_dict(athlete)
+            athlete = jsonify(athlete)
+            return athlete
+
+        else:
+            athletes = []
+            for athlete in Athlete.select():
+                athlete = model_to_dict(athlete)
+                athletes.append(athlete)
+            athletes = jsonify(athletes)
+            return athletes
