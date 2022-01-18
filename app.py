@@ -140,3 +140,8 @@ def athlete(id=None):
         athlete.silver_medal_count = updated_athlete['silver metal count']
         athlete.bronze_medal_count = updated_athlete['bronze metal count']
         athlete.total_medal_count = updated_athlete['total metal count']
+
+    if request.method == 'DELETE':
+        athlete = Athlete.get(Athlete.id == id)
+        athlete.delete_instance()
+        return jsonify({"deleted": True})
