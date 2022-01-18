@@ -123,3 +123,11 @@ def athlete(id=None):
                 athletes.append(athlete)
             athletes = jsonify(athletes)
             return athletes
+
+    if request.method == 'POST':
+        athlete = request.get_json()
+        athlete = dict_to_model(Athlete, athlete)
+        athlete.save()
+        athlete = model_to_dict(athlete)
+        athlete = jsonify(athlete)
+        return athlete
