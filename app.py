@@ -103,3 +103,7 @@ athlete11 = Athlete(
 
 
 app = Flask(__name__)
+
+
+@app.route('/athlete', methods=['GET', 'PUT', 'POST', 'DELETE'])
+@app.route('/athlete/<id>', methods=['GET', 'PUT', 'POST', 'DELETE'])
